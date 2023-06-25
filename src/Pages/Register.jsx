@@ -13,9 +13,9 @@ export const Register = () => {
 	return (
 		<Layout title="Sing up">
 			<Forms title="Registro de usuarios">
-				<InputText name="Nombre" />
-				<InputEmail name="Correo electrónico" />
-				<InputPassword name="Contraseña" />
+				<InputText title="Nombre" />
+				<InputEmail title="Correo electrónico" />
+				<InputPassword title="Contraseña" />
 				<div className="flex justify-center">
 					<SubmitBtn text="Registrarse" />
 					<LinksBtn color="red" text="Cancelar" to="/" />

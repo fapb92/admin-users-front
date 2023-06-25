@@ -1,6 +1,6 @@
 import React from "react";
 import { CustomInput } from "./CustomInput";
 
-export const InputText = ({ name = "text", ...props }) => {
-	return <CustomInput name={name} {...props} />;
+export const InputText = ({ title = "text", ...props }) => {
+	return <CustomInput title={title} {...props} />;
 };

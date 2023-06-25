@@ -1,10 +1,10 @@
 import React from "react";
 
-export const CustomInput = ({ type = "text", name='name', ...props }) => {
+export const CustomInput = ({ type = "text", title='title', ...props }) => {
 	return (
 		<div className="mb-4">
 			<label className="block text-gray-700 font-bold mb-2">
-				{name}:
+				{title}:
 			</label>
 			<input
 				type={type}
