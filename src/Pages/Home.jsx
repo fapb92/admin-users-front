@@ -10,10 +10,16 @@ export const Home = () => {
 		<Layout>
 			<div className="bg-gray-100 p-4 rounded">
 				<h1 className="text-3xl font-bold text-center">Bienvenido a User Admin</h1>
-				{!auth?.accessToken && (
+				{!auth?.user && (
 					<div className="flex justify-center">
 						<LinksBtn color="green" text="Iniciar Sesión" to="/signin" />
 						<LinksBtn color="blue" text="Registrarse" to="/signup" />
+					</div>
+				)}
+				{auth?.user && (
+					<div className="flex justify-center">
+						<LinksBtn color="green" text="Perfil" to="/profile" />
+						<LinksBtn color="green" text="Usuarios" to="/users" />
 					</div>
 				)}
 			</div>

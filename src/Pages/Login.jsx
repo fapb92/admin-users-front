@@ -57,6 +57,7 @@ export const Login = () => {
 						return {
 							...prev,
 							accessToken: res.data.access_token,
+							user: { email: data.email },
 						};
 					});
 					setTimeout(() => navigate(from, { replace: true }), 500);

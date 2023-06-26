@@ -1,10 +1,20 @@
 import React from "react";
 import LoadingComponent from "../Loading";
+import { NavigationBar } from "../NavigationBar";
+import { useAuth } from "../../Hooks/useAuth";
 
-export const Layout = ({ children, title = "", isLoading=false }) => {
+export const Layout = ({ children, title = "", isLoading = false }) => {
 	document.title = !title ? "User Admin" : `User Admin - ${title}`;
-	return <div>
-		{!isLoading && <div className="flex justify-center items-center h-screen">{children}</div>}
-		{isLoading && <LoadingComponent />}
-	</div>;
+	const { auth } = useAuth();
+	return (
+		<div>
+			{!isLoading && (
+				<>
+					{auth.user && <NavigationBar />}
+					<div className="flex justify-center items-center h-screen">{children}</div>
+				</>
+			)}
+			{isLoading && <LoadingComponent />}
+		</div>
+	);
 };
