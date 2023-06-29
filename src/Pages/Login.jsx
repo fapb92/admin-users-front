@@ -10,6 +10,7 @@ import { LoginService } from "../Services/LoginService";
 import { Buttons } from "../Components/Buttons/Buttons";
 import { useAuth } from "../Hooks/useAuth";
 import { ResendEmailVerificationService } from "../Services/ResendEmailVerificationService";
+import { getUserService } from "../Services/getUserService";
 
 export const Login = () => {
 	const { setAuth } = useAuth();
@@ -49,15 +50,17 @@ export const Login = () => {
 		}
 
 		LoginService(data)
-			.then((res) => {
+			.then(async (res) => {
 				setSuccessMessage(res.data.message);
 				setShowResendEmail(res.data.status !== 1);
 				if (res.data.status === 1) {
+					const token = res.data.access_token
+					const resUser = await getUserService(token)
 					setAuth((prev) => {
 						return {
 							...prev,
 							accessToken: res.data.access_token,
-							user: { email: data.email },
+							user: resUser.data.data,
 						};
 					});
 					setTimeout(() => navigate(from, { replace: true }), 500);
