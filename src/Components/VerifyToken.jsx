@@ -10,7 +10,7 @@ export const VerifyToken = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-        const controller = new AbortController()
+		const controller = new AbortController();
 		const getToken = async () => {
 			try {
 				await refreshToken(controller.signal);
@@ -21,9 +21,9 @@ export const VerifyToken = () => {
 			}
 		};
 		!auth?.accessToken ? getToken() : setLoading(false);
-        return ()=>{
-            controller.abort()
-        }
+		return () => {
+			controller.abort();
+		};
 	}, []);
 
 	return <div>{loading ? <LoadingComponent /> : <Outlet />}</div>;
