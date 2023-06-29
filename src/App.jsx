@@ -6,7 +6,7 @@ import { Login } from "./Pages/Login";
 import { UserList } from "./Pages/UserList";
 import { RequestResetPassword } from "./Pages/RequestResetPassword";
 import { ResetPassword } from "./Pages/ResetPassword";
-import { UserInfo } from "./Pages/UserInfo";
+import { UserInfo } from "./Pages/User/UserInfo";
 import { PrivateRoutes } from "./Components/PrivateRoutes";
 import { VerifyToken } from "./Components/VerifyToken";
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../Hooks/useAuth";
-import { Layout } from "../Components/Layouts/Layout";
-import { TableVerticalHead } from "../Components/Tables/TableVerticalHead";
-import { LinksBtn } from "../Components/Buttons/LinksBtn";
-import { useUser } from "../Hooks/useUser";
+import { useAuth } from "../../Hooks/useAuth";
+import { Layout } from "../../Components/Layouts/Layout";
+import { TableVerticalHead } from "../../Components/Tables/TableVerticalHead";
+import { LinksBtn } from "../../Components/Buttons/LinksBtn";
+import { useUser } from "../../Hooks/useUser";
 
 export function UserInfo() {
 	const { auth } = useAuth();
@@ -11,7 +11,6 @@ export function UserInfo() {
 	const getUser = useUser();
 
 	useEffect(() => {
-		console.log("entra useefect userinfo");
 		const controller = new AbortController();
 		const callUser = async () => {
 			try {
