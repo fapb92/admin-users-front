@@ -5,5 +5,5 @@ import { useAuth } from "../Hooks/useAuth";
 export const PrivateRoutes = () => {
 	const { auth } = useAuth();
 	const location = useLocation();
-	return auth?.user ? <Outlet /> : <Navigate to="/signin" state={{ from: location }} replace />;
+	return auth?.accessToken ? <Outlet /> : <Navigate to="/signin" state={{ from: location }} replace />;
 };
