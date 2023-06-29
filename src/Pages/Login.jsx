@@ -53,19 +53,17 @@ export const Login = () => {
 			.then(async (res) => {
 				setSuccessMessage(res.data.message);
 				setShowResendEmail(res.data.status !== 1);
+				const token = res.data.access_token;
 				if (res.data.status === 1) {
-					const token = res.data.access_token
-					const resUser = await getUserService(token)
 					setAuth((prev) => {
 						return {
 							...prev,
-							accessToken: res.data.access_token,
-							user: resUser.data.data,
+							accessToken: token,
 						};
 					});
-					setTimeout(() => navigate(from, { replace: true }), 500);
+					setTimeout(() => navigate(from, { replace: true }), 1000);
 				} else {
-					setTempToken(res.data.access_token);
+					setTempToken(token);
 				}
 			})
 			.catch((error) => {
