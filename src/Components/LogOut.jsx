@@ -7,7 +7,6 @@ export const LogOut = () => {
 	const navigate = useNavigate();
 	const handleSubmit = (e) => {
 		e.preventDefault();
-        console.log("entra a handle logout");
 		logOutService(auth?.accessToken)
 			.then((res) => {
 				setAuth({});
