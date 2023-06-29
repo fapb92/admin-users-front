@@ -5,7 +5,7 @@ import { useRefreshToken } from "../Hooks/useRefreshToken";
 import LoadingComponent from "./Loading";
 
 export const VerifyToken = () => {
-	const { auth } = useAuth();
+	const { auth, session_is_expire, setAuth } = useAuth();
 	const refreshToken = useRefreshToken();
 	const [loading, setLoading] = useState(true);
 
@@ -15,12 +15,16 @@ export const VerifyToken = () => {
 			try {
 				await refreshToken(controller.signal);
 			} catch (error) {
-				// console.log(error);
+				if (error?.response?.status) {
+					setAuth({});
+				}
 			} finally {
 				setLoading(false);
 			}
 		};
+
 		!auth?.accessToken ? getToken() : setLoading(false);
+
 		return () => {
 			controller.abort();
 		};
