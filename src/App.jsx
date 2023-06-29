@@ -10,6 +10,7 @@ import { UserInfo } from "./Pages/User/UserInfo";
 import { PrivateRoutes } from "./Components/PrivateRoutes";
 import { VerifyToken } from "./Components/VerifyToken";
 import { UpdateUser } from "./Pages/User/UpdateUser";
+import { SelectRole } from "./Pages/User/SelectRole";
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 					<Route element={<PrivateRoutes />}>
 						<Route path="/profile" element={<UserInfo />} />
 						<Route path="/profile/update" element={<UpdateUser />} />
+						<Route path="/profile/selectrole" element={<SelectRole />} />
 						<Route path="/users" element={<UserList />} />
 					</Route>
 				</Route>

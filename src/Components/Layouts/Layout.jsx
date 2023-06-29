@@ -10,7 +10,7 @@ export const Layout = ({ children, title = "", isLoading = false }) => {
 		<div>
 			{!isLoading && (
 				<>
-					{auth.user && <NavigationBar />}
+					{auth?.accessToken && <NavigationBar />}
 					<div className="flex justify-center items-center h-screen">{children}</div>
 				</>
 			)}
