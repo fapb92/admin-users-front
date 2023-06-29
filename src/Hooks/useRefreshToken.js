@@ -8,7 +8,7 @@ export const useRefreshToken = () => {
 		const response = await refreshTokenService(signal);
 		const token = response.data;
 		setAuth((prev) => {
-			return { ...prev, accessToken: token.access_token, session_expires_in: token.expires_in };
+			return { ...prev, accessToken: token.access_token, session_expires_in: (Date.now() + (token.expires_in*1000)) };
 		});
 		return token.access_token;
 	};

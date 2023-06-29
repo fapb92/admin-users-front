@@ -59,6 +59,7 @@ export const Login = () => {
 						return {
 							...prev,
 							accessToken: token,
+							session_expires_in: Date.now() + res.data.expires_in * 1000,
 						};
 					});
 					setTimeout(() => navigate(from, { replace: true }), 1000);
