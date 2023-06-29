@@ -9,6 +9,7 @@ import { ResetPassword } from "./Pages/ResetPassword";
 import { UserInfo } from "./Pages/User/UserInfo";
 import { PrivateRoutes } from "./Components/PrivateRoutes";
 import { VerifyToken } from "./Components/VerifyToken";
+import { UpdateUser } from "./Pages/User/UpdateUser";
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 					<Route path="/password/reset" element={<ResetPassword />} />
 					<Route element={<PrivateRoutes />}>
 						<Route path="/profile" element={<UserInfo />} />
+						<Route path="/profile/update" element={<UpdateUser />} />
 						<Route path="/users" element={<UserList />} />
 					</Route>
 				</Route>

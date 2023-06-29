@@ -40,8 +40,8 @@ export function UserInfo() {
 					}}
 				/>
 				<div className="flex justify-center">
-					<LinksBtn text="Editar" />
-					<LinksBtn color="red" text="Cancelar" to="/" />
+					<LinksBtn text="Editar" to='update'/>
+					<LinksBtn color="red" text="Volver" to="/" />
 				</div>
 			</div>
 		</Layout>
