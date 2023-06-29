@@ -6,15 +6,26 @@ export function useAuthRequests() {
 	const { auth } = useAuth();
 
 	const requestAuth = async (functionAuth, params = {}) => {
-		let token = auth?.accessToken;
-		if (!token) {
-			token = await refreshToken(params?.signal);
-		}
+		const excFunction = async (functionAuth, params = {}) => {
+			if (!Object.keys(params).length) {
+				return await functionAuth(token);
+			} else {
+				return await functionAuth(token, params);
+			}
+		};
 
-		if (!Object.keys(params).length) {
-			return await functionAuth(token);
-		} else {
-			return await functionAuth(token, params);
+		let token = auth?.accessToken;
+		try {
+			if (!token) {
+				token = await refreshToken(params?.signal);
+			}
+			return await excFunction(functionAuth, params);
+		} catch (error) {
+			if (error?.response?.status === 401 && auth?.accessToken) {
+				token = await refreshToken(params?.signal);
+				return await excFunction(functionAuth, params);
+			}
+			throw error;
 		}
 	};
 	return requestAuth;
