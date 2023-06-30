@@ -1,7 +1,13 @@
 import React from "react";
 
 // actions = [{ button, props: { prop1: { value: "value" }, prop2: { hint: "key_data" } } }]
-export const TablesHorizontalHead = ({ title = "Title", headers = { key_data: "Name to display" }, data = [{ key_data: "value" }], actions = [] }) => {
+export const TablesHorizontalHead = ({
+	title = "Title",
+	headers = { key_data: "Name to display" },
+	data = [{ key_data: "value" }],
+	actions = [],
+	pagination = { onclick: "function(url)", pages: [] },
+}) => {
 	const styleTD = "border-b border-gray-300 px-4 py-2 text-center";
 	const styleTH = "border-b border-gray-300 px-4 py-2";
 	return (
@@ -17,7 +23,7 @@ export const TablesHorizontalHead = ({ title = "Title", headers = { key_data: "N
 								</th>
 							);
 						})}
-						{actions.length === 0 ? null : <th ></th>}
+						{actions.length === 0 ? null : <th></th>}
 					</tr>
 				</thead>
 				<tbody>
@@ -76,6 +82,22 @@ export const TablesHorizontalHead = ({ title = "Title", headers = { key_data: "N
 					})}
 				</tbody>
 			</table>
+			{pagination.length === 0 ? null : (
+				<div className="flex justify-center mt-4">
+					{pagination.pages.map((page, index) => {
+						return (
+							<button 
+							className={"px-4 py-2 bg-gray-200 text-gray-800 rounded mr-2"} 
+							key={index}
+							onClick={async ()=> await pagination.onclick(page.url)}
+							children={page.label.replace('&laquo;','<<').replace('&raquo;','>>')}
+							/>
+						);
+					})}
+
+					
+				</div>
+			)}
 		</div>
 	);
 };

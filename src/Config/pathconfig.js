@@ -10,4 +10,5 @@ export const path = {
 	refreshToken: import.meta.env.VITE_USER_ADMIN_ENPOINT_REFRESH_TOKEN,
 	rolelist: import.meta.env.VITE_USER_ADMIN_ENPOINT_ROLE_LIST,
 	roleDetails: (role) => import.meta.env.VITE_USER_ADMIN_ENPOINT_ROLE_DETAILS.replace("{role}", role),
+	userList: import.meta.env.VITE_USER_ADMIN_ENPOINT_USERS_LIST,
 };

@@ -11,7 +11,7 @@ export const Layout = ({ children, title = "", isLoading = false }) => {
 			{!isLoading && (
 				<>
 					{auth?.accessToken && <NavigationBar />}
-					<div className="flex justify-center items-center h-screen">{children}</div>
+					<div className="flex justify-center items-center py-3">{children}</div>
 				</>
 			)}
 			{isLoading && <LoadingComponent />}
