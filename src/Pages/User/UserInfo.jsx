@@ -30,9 +30,10 @@ export function UserInfo() {
 	return (
 		<Layout isLoading={loading}>
 			<div className="flex flex-col items-center">
-				<img src={auth?.user?.avatar_url} alt="Database Image" className="w-32 h-32" />
+				<img src={auth?.user?.avatar_url} alt="User avatar" className="w-32 h-32" />
 				<TableVerticalHead
 					data={{
+						ID: auth?.user?.id,
 						Nombre: auth?.user?.name,
 						Email: auth?.user?.email,
 						"Fecha de registro": new Date(auth?.user?.register_at).toTimeString(),
@@ -40,7 +41,7 @@ export function UserInfo() {
 					}}
 				/>
 				<div className="flex justify-center">
-					<LinksBtn text="Editar" to='update'/>
+					<LinksBtn text="Editar" to="update" />
 					<LinksBtn color="red" text="Volver" to="/" />
 				</div>
 			</div>
