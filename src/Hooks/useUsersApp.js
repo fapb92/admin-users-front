@@ -1,5 +1,6 @@
 import { useAuthRequests } from "./useAuthRequests";
 import { getUserListByNewUrlService, getUserListService } from "../Services/getUserListService";
+import { getUsersDetailsService } from "../Services/getUsersDetailsService";
 
 export const useUsersApp = () => {
 	const authRequest = useAuthRequests();
@@ -21,5 +22,14 @@ export const useUsersApp = () => {
 			throw error;
 		}
 	};
-	return { getUserList, getUserByUrlList };
+
+	const getUsersDetails = async (id, signal) => {
+		try {
+			const { data: res } = await authRequest(getUsersDetailsService, { user: id, signal });
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	};
+	return { getUserList, getUserByUrlList, getUsersDetails };
 };

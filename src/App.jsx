@@ -13,6 +13,7 @@ import { UpdateUser } from "./Pages/User/UpdateUser";
 import { SelectRole } from "./Pages/User/SelectRole";
 import { RoleList } from "./Pages/Roles/RoleList";
 import { ShowRole } from "./Pages/Roles/ShowRole";
+import { UserDetails } from "./Pages/Users/UserDetails";
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 						<Route path="/profile/update" element={<UpdateUser />} />
 						<Route path="/profile/selectrole" element={<SelectRole />} />
 						<Route path="/users" element={<UserList />} />
+						<Route path="/users/:id" element={<UserDetails />} />
 						<Route path="/role/list" element={<RoleList />} />
 						<Route path="/role/:role" element={<ShowRole />} />
 					</Route>
