@@ -31,7 +31,7 @@ export const Home = () => {
 	}, []);
 	return (
 		<Layout isLoading={loading}>
-			<div className="bg-gray-100 p-4 rounded max-w-lg">
+			<div className="bg-gray-100 p-4 rounded max-w-lg mt-40">
 				<h1 className="text-3xl font-bold text-center">Bienvenido {auth?.user?.name || "a User Admin"}</h1>
 				{!auth?.user && (
 					<div className="flex justify-center">

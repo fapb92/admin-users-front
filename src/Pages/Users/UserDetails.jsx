@@ -18,7 +18,7 @@ export const UserDetails = () => {
 			try {
 				const res = await getUsersDetails(id);
 				setUserData(res.data);
-                console.log({res});
+				console.log({ res });
 			} catch (error) {
 				console.log(error);
 			} finally {
@@ -45,7 +45,8 @@ export const UserDetails = () => {
 					}}
 				/>
 				<div className="flex justify-center">
-					<LinksBtn text="Editar" to="update" />
+					<LinksBtn text="Editar Información" to="update" />
+					<LinksBtn color="green" text="Editar Roles" to="asignremove" />
 					<LinksBtn color="red" text="Volver" to="/" />
 				</div>
 			</div>

@@ -16,6 +16,7 @@ import { ShowRole } from "./Pages/Roles/ShowRole";
 import { UserDetails } from "./Pages/Users/UserDetails";
 import { UpdateUsersApp } from "./Pages/Users/UpdateUsersApp";
 import { CreateUsers } from "./Pages/Users/CreateUsers";
+import { AsignRemoveRoles } from "./Pages/Users/AsignRemoveRoles";
 
 function App() {
 	return (
@@ -35,6 +36,7 @@ function App() {
 						<Route path="/users/create" element={<CreateUsers />} />
 						<Route path="/users/:id" element={<UserDetails />} />
 						<Route path="/users/:id/update" element={<UpdateUsersApp />} />
+						<Route path="/users/:id/asignremove" element={<AsignRemoveRoles />} />
 						<Route path="/role/list" element={<RoleList />} />
 						<Route path="/role/:role" element={<ShowRole />} />
 					</Route>
