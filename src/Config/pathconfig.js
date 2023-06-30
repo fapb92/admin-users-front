@@ -8,4 +8,5 @@ export const path = {
 	selectRoleUser: import.meta.env.VITE_USER_ADMIN_ENPOINT_SELECT_USER_ROLE,
 	resendEmailVerification: import.meta.env.VITE_USER_ADMIN_ENPOINT_RESEND_EMAIL_VERIFICATION,
 	refreshToken: import.meta.env.VITE_USER_ADMIN_ENPOINT_REFRESH_TOKEN,
+	rolelist: import.meta.env.VITE_USER_ADMIN_ENPOINT_ROLE_LIST,
 };

@@ -41,7 +41,7 @@ export const Home = () => {
 				)}
 				{auth?.user && (
 					<div className="flex justify-center">
-						<LinksBtn color="green" text="Perfil" to="/profile" />
+						<LinksBtn color="green" text="Lista de roles plataforma" to="/role/list" />
 						<LinksBtn color="green" text="Usuarios" to="/users" />
 					</div>
 				)}

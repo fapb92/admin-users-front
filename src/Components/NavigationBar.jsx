@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useAuth } from "../Hooks/useAuth";
 import { Link } from "react-router-dom";
 export const NavigationBar = () => {
+	const styleLinks = "text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium";
 	const [showButtons, setShowButtons] = useState(false);
 	const { auth } = useAuth();
 
@@ -15,8 +16,11 @@ export const NavigationBar = () => {
 				<div className="flex items-center justify-between h-16">
 					<div className="hidden md:block">
 						<div className="ml-10 flex items-baseline space-x-4">
-							<Link to="/" className="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">
+							<Link to="/" className={styleLinks}>
 								Home
+							</Link>
+							<Link to="/profile" className={styleLinks}>
+								Perfil
 							</Link>
 						</div>
 					</div>
