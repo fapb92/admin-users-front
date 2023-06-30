@@ -2,6 +2,7 @@ import { useAuthRequests } from "./useAuthRequests";
 import { getUserListByNewUrlService, getUserListService } from "../Services/getUserListService";
 import { getUsersDetailsService } from "../Services/getUsersDetailsService";
 import { updateUsersAppService } from "../Services/updateUsersAppService";
+import { deleteUsersAppService } from "../Services/deleteUsersAppService";
 
 export const useUsersApp = () => {
 	const authRequest = useAuthRequests();
@@ -41,5 +42,13 @@ export const useUsersApp = () => {
 			throw error;
 		}
 	};
-	return { getUserList, getUserByUrlList, getUsersDetails, updateUsersApp };
+	const deleteUsersApp = async (id) => {
+		try {
+			const { data: res } = await authRequest(deleteUsersAppService, { user: id });
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	};
+	return { getUserList, getUserByUrlList, getUsersDetails, updateUsersApp, deleteUsersApp };
 };

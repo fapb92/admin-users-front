@@ -13,4 +13,5 @@ export const path = {
 	userList: import.meta.env.VITE_USER_ADMIN_ENPOINT_USERS_LIST,
 	userDetails: (user) => import.meta.env.VITE_USER_ADMIN_ENPOINT_USERS_DETAILS.replace("{user}", user),
 	updateUsersApp: (user) => import.meta.env.VITE_USER_ADMIN_ENPOINT_USERS_APP_UPDATE.replace("{user}", user),
+	deleteUsersApp: (user) => import.meta.env.VITE_USER_ADMIN_ENPOINT_USERS_APP_DELETE.replace("{user}", user),
 };
