@@ -3,6 +3,7 @@ import { getUserListByNewUrlService, getUserListService } from "../Services/getU
 import { getUsersDetailsService } from "../Services/getUsersDetailsService";
 import { updateUsersAppService } from "../Services/updateUsersAppService";
 import { deleteUsersAppService } from "../Services/deleteUsersAppService";
+import { createUsersAppService } from "../Services/createUsersAppService";
 
 export const useUsersApp = () => {
 	const authRequest = useAuthRequests();
@@ -50,5 +51,14 @@ export const useUsersApp = () => {
 			throw error;
 		}
 	};
-	return { getUserList, getUserByUrlList, getUsersDetails, updateUsersApp, deleteUsersApp };
+
+	const createUsersApp = async (data) => {
+		try {
+			const { data: res } = await authRequest(createUsersAppService, { data });
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	};
+	return { getUserList, getUserByUrlList, getUsersDetails, updateUsersApp, deleteUsersApp, createUsersApp };
 };

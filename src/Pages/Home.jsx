@@ -31,7 +31,7 @@ export const Home = () => {
 	}, []);
 	return (
 		<Layout isLoading={loading}>
-			<div className="bg-gray-100 p-4 rounded">
+			<div className="bg-gray-100 p-4 rounded max-w-lg">
 				<h1 className="text-3xl font-bold text-center">Bienvenido {auth?.user?.name || "a User Admin"}</h1>
 				{!auth?.user && (
 					<div className="flex justify-center">
@@ -40,9 +40,10 @@ export const Home = () => {
 					</div>
 				)}
 				{auth?.user && (
-					<div className="flex justify-center">
-						<LinksBtn color="green" text="Lista de roles plataforma" to="/role/list" />
-						<LinksBtn color="green" text="Usuarios" to="/users" />
+					<div className="flex justify-center flex-wrap">
+						<LinksBtn color="green" text="Lista de roles en la plataforma" to="/role/list" />
+						<LinksBtn color="green" text="Lista de usuarios" to="/users" />
+						<LinksBtn color="green" text="Crear Usuarios" to="/users/create" />
 					</div>
 				)}
 			</div>
