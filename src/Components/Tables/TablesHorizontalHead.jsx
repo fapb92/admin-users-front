@@ -1,6 +1,7 @@
 import React from "react";
 
-export const TablesHorizontalHead = ({ title = "Title", headers = { key_data: "Name to display" }, data = [{ key_data: "value" }] }) => {
+// actions = [{ button, props: { prop1: { value: "value" }, prop2: { hint: "key_data" } } }]
+export const TablesHorizontalHead = ({ title = "Title", headers = { key_data: "Name to display" }, data = [{ key_data: "value" }], actions = [] }) => {
 	const styleTD = "border-b border-gray-300 px-4 py-2 text-center";
 	const styleTH = "border-b border-gray-300 px-4 py-2";
 	return (
@@ -16,6 +17,7 @@ export const TablesHorizontalHead = ({ title = "Title", headers = { key_data: "N
 								</th>
 							);
 						})}
+						{actions.length === 0 ? null : <th ></th>}
 					</tr>
 				</thead>
 				<tbody>
@@ -23,9 +25,49 @@ export const TablesHorizontalHead = ({ title = "Title", headers = { key_data: "N
 						return (
 							<tr key={indexData}>
 								{Object.entries(headers).map(([key, value], index) => {
+									if (key !== "actions") {
+										return (
+											<td className={styleTD} key={`${indexData}-${index}`}>
+												{itemObject[key]}
+											</td>
+										);
+									}
+
+									const propsTransformed = (propsToObject) => {
+										const propsToReturn = {};
+										Object.keys(propsToObject).forEach((key) => {
+											const props = propsToObject[key];
+											if (props?.value) {
+												propsToReturn[key] = props.value;
+											}
+
+											if (props?.hint) {
+												propsToReturn[key] = itemObject[props.hint];
+											}
+
+											if (props?.func) {
+												if (props?.arg) {
+													if (props.arg?.hint) {
+														propsToReturn[key] = props.func(itemObject[props.arg.hint]);
+													}
+													if (props.arg?.value) {
+														propsToReturn[key] = props.func(props.arg.value);
+													}
+												} else {
+													propsToReturn[key] = props.func();
+												}
+											}
+										});
+										return propsToReturn;
+									};
+
 									return (
 										<td className={styleTD} key={`${indexData}-${index}`}>
-											{itemObject[key]}
+											{actions.map((action, ind) => {
+												const { button: Button, props } = action;
+												const newProps = propsTransformed(props);
+												return <Button {...newProps} key={`${indexData}-${index}-${ind}`} />;
+											})}
 										</td>
 									);
 								})}

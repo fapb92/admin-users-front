@@ -12,6 +12,7 @@ import { VerifyToken } from "./Components/VerifyToken";
 import { UpdateUser } from "./Pages/User/UpdateUser";
 import { SelectRole } from "./Pages/User/SelectRole";
 import { RoleList } from "./Pages/Roles/RoleList";
+import { ShowRole } from "./Pages/Roles/ShowRole";
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 						<Route path="/profile/selectrole" element={<SelectRole />} />
 						<Route path="/users" element={<UserList />} />
 						<Route path="/role/list" element={<RoleList />} />
+						<Route path="/role/:role" element={<ShowRole />} />
 					</Route>
 				</Route>
 			</Routes>

@@ -9,4 +9,5 @@ export const path = {
 	resendEmailVerification: import.meta.env.VITE_USER_ADMIN_ENPOINT_RESEND_EMAIL_VERIFICATION,
 	refreshToken: import.meta.env.VITE_USER_ADMIN_ENPOINT_REFRESH_TOKEN,
 	rolelist: import.meta.env.VITE_USER_ADMIN_ENPOINT_ROLE_LIST,
+	roleDetails: (role) => import.meta.env.VITE_USER_ADMIN_ENPOINT_ROLE_DETAILS.replace("{role}", role),
 };
