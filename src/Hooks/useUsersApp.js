@@ -1,6 +1,7 @@
 import { useAuthRequests } from "./useAuthRequests";
 import { getUserListByNewUrlService, getUserListService } from "../Services/getUserListService";
 import { getUsersDetailsService } from "../Services/getUsersDetailsService";
+import { updateUsersAppService } from "../Services/updateUsersAppService";
 
 export const useUsersApp = () => {
 	const authRequest = useAuthRequests();
@@ -31,5 +32,14 @@ export const useUsersApp = () => {
 			throw error;
 		}
 	};
-	return { getUserList, getUserByUrlList, getUsersDetails };
+
+	const updateUsersApp = async (id, data) => {
+		try {
+			const { data: res } = await authRequest(updateUsersAppService, { user: id, data });
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	};
+	return { getUserList, getUserByUrlList, getUsersDetails, updateUsersApp };
 };

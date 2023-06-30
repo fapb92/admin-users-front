@@ -12,4 +12,5 @@ export const path = {
 	roleDetails: (role) => import.meta.env.VITE_USER_ADMIN_ENPOINT_ROLE_DETAILS.replace("{role}", role),
 	userList: import.meta.env.VITE_USER_ADMIN_ENPOINT_USERS_LIST,
 	userDetails: (user) => import.meta.env.VITE_USER_ADMIN_ENPOINT_USERS_DETAILS.replace("{user}", user),
+	updateUsersApp: (user) => import.meta.env.VITE_USER_ADMIN_ENPOINT_USERS_APP_UPDATE.replace("{user}", user),
 };

@@ -45,6 +45,7 @@ export const UserDetails = () => {
 					}}
 				/>
 				<div className="flex justify-center">
+					<LinksBtn text="Editar" to="update" />
 					<LinksBtn color="red" text="Volver" to="/" />
 				</div>
 			</div>
