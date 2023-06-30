@@ -23,7 +23,7 @@ export const useUser = () => {
 			permissions,
 		}));
 
-		return user;
+		return {user,role,permissions};
 	};
 
 	return getUser;

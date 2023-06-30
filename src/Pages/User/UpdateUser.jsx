@@ -52,7 +52,7 @@ export const UpdateUser = () => {
 		const controller = new AbortController();
 		const callUser = async () => {
 			try {
-				const user = await getUser(controller.signal);
+				const {user} = await getUser(controller.signal);
 				setUpdateUser(user);
 			} catch (error) {
 				console.log(error);
