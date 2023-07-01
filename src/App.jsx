@@ -17,6 +17,7 @@ import { UserDetails } from "./Pages/Users/UserDetails";
 import { UpdateUsersApp } from "./Pages/Users/UpdateUsersApp";
 import { CreateUsers } from "./Pages/Users/CreateUsers";
 import { AsignRemoveRoles } from "./Pages/Users/AsignRemoveRoles";
+import { NotFoundPage } from "./Pages/NotFoundPage";
 
 function App() {
 	return (
@@ -40,6 +41,7 @@ function App() {
 						<Route path="/role/list" element={<RoleList />} />
 						<Route path="/role/:role" element={<ShowRole />} />
 					</Route>
+					<Route path="*" element={<NotFoundPage />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
