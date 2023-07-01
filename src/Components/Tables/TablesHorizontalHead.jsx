@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonsPermissions from "../Permissions/ButtonsPermissions";
 
 // actions = [{ button, props: { prop1: { value: "value" }, prop2: { hint: "key_data" } } }]
 export const TablesHorizontalHead = ({
@@ -10,6 +11,34 @@ export const TablesHorizontalHead = ({
 }) => {
 	const styleTD = "border-b border-gray-300 px-4 py-2 text-center";
 	const styleTH = "border-b border-gray-300 px-4 py-2";
+	const propsTransformed = (propsToObject, itemObject) => {
+		const propsToReturn = {};
+		Object.keys(propsToObject).forEach((key) => {
+			const props = propsToObject[key];
+			if (props?.value) {
+				propsToReturn[key] = props.value;
+			}
+
+			if (props?.hint) {
+				propsToReturn[key] = itemObject[props.hint];
+			}
+
+			if (props?.func) {
+				if (props?.arg) {
+					if (props.arg?.hint) {
+						propsToReturn[key] = props.func(itemObject[props.arg.hint]);
+					}
+					if (props.arg?.value) {
+						propsToReturn[key] = props.func(props.arg.value);
+					}
+				} else {
+					propsToReturn[key] = props.func();
+				}
+			}
+		});
+		return propsToReturn;
+	};
+
 	return (
 		<div className="flex flex-col items-center">
 			<h1 className="text-3xl font-bold mb-4">{title}</h1>
@@ -39,39 +68,20 @@ export const TablesHorizontalHead = ({
 										);
 									}
 
-									const propsTransformed = (propsToObject) => {
-										const propsToReturn = {};
-										Object.keys(propsToObject).forEach((key) => {
-											const props = propsToObject[key];
-											if (props?.value) {
-												propsToReturn[key] = props.value;
-											}
-
-											if (props?.hint) {
-												propsToReturn[key] = itemObject[props.hint];
-											}
-
-											if (props?.func) {
-												if (props?.arg) {
-													if (props.arg?.hint) {
-														propsToReturn[key] = props.func(itemObject[props.arg.hint]);
-													}
-													if (props.arg?.value) {
-														propsToReturn[key] = props.func(props.arg.value);
-													}
-												} else {
-													propsToReturn[key] = props.func();
-												}
-											}
-										});
-										return propsToReturn;
-									};
-
 									return (
 										<td className={styleTD} key={`${indexData}-${index}`}>
 											{actions.map((action, ind) => {
-												const { button: Button, props } = action;
-												const newProps = propsTransformed(props);
+												const { button: Button, props, permissions } = action;
+												const newProps = propsTransformed(props, itemObject);
+												if (!!permissions) {
+													return (
+														<ButtonsPermissions
+															buttons={<Button {...newProps} />}
+															permissionsNeeded={permissions}
+															key={`${indexData}-${index}-${ind}`}
+														/>
+													);
+												}
 												return <Button {...newProps} key={`${indexData}-${index}-${ind}`} />;
 											})}
 										</td>
@@ -86,16 +96,14 @@ export const TablesHorizontalHead = ({
 				<div className="flex justify-center mt-4">
 					{pagination.pages.map((page, index) => {
 						return (
-							<button 
-							className={"px-4 py-2 bg-gray-200 text-gray-800 rounded mr-2"} 
-							key={index}
-							onClick={async ()=> await pagination.onclick(page.url)}
-							children={page.label.replace('&laquo;','<<').replace('&raquo;','>>')}
+							<button
+								className={"px-4 py-2 bg-gray-200 text-gray-800 rounded mr-2"}
+								key={index}
+								onClick={async () => await pagination.onclick(page.url)}
+								children={page.label.replace("&laquo;", "<<").replace("&raquo;", ">>")}
 							/>
 						);
 					})}
-
-					
 				</div>
 			)}
 		</div>

@@ -5,6 +5,7 @@ import { useRole } from "../../Hooks/useRole";
 import { Buttons } from "../../Components/Buttons/Buttons";
 import { useParams } from "react-router-dom";
 import { ErrorMessage } from "../../Components/ErrorMessage";
+import ButtonsPermissions from "../../Components/Permissions/ButtonsPermissions";
 
 export const AsignRemoveRoles = () => {
 	const { id } = useParams();
@@ -120,8 +121,8 @@ export const AsignRemoveRoles = () => {
 					</select>
 				)}
 				<div className="flex justify-center">
-					<Buttons text="Agregar" onClick={handleAsignRoleClick} />
-					<Buttons color="green" text="Remover" onClick={handleRemoveRoleClick} />
+					<ButtonsPermissions buttons={<Buttons text="Agregar" onClick={handleAsignRoleClick} />} permissionsNeeded={["p-004"]} />
+					<ButtonsPermissions buttons={<Buttons color="green" text="Remover" onClick={handleRemoveRoleClick} />} permissionsNeeded={["p-005"]} />
 				</div>
 			</Forms>
 		</Layout>

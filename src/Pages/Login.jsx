@@ -60,6 +60,8 @@ export const Login = () => {
 							...prev,
 							accessToken: token,
 							session_expires_in: Date.now() + res.data.expires_in * 1000,
+							role: res.data.role,
+							permissions: res.data.permissions,
 						};
 					});
 					setTimeout(() => navigate(from, { replace: true }), 1000);

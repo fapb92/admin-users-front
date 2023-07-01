@@ -11,19 +11,14 @@ export const useUser = () => {
 			return auth?.user;
 		}
 		const response = await requestAuth(getUserService, { signal });
-		const {
-			role_permission_data: { role, permissions },
-			...user
-		} = response.data.data;
+		const { ...user } = response.data.data;
 
 		setAuth((prev) => ({
 			...prev,
 			user,
-			role,
-			permissions,
 		}));
 
-		return {user,role,permissions};
+		return { user };
 	};
 
 	return getUser;

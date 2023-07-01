@@ -9,6 +9,7 @@ import { Buttons } from "../../Components/Buttons/Buttons";
 import { LinksBtn } from "../../Components/Buttons/LinksBtn";
 import { useRole } from "../../Hooks/useRole";
 import { ErrorMessage } from "../../Components/ErrorMessage";
+import ButtonsPermissions from "../../Components/Permissions/ButtonsPermissions";
 
 export const CreateUsers = () => {
 	const { createUsersApp } = useUsersApp();
@@ -81,7 +82,6 @@ export const CreateUsers = () => {
 			try {
 				const res = await roleList(controller.signal);
 				setRoles(res.data);
-				console.log(res);
 			} catch (error) {
 				console.log(error);
 			}
@@ -132,7 +132,8 @@ export const CreateUsers = () => {
 					</div>
 					{newUser && (
 						<div className="flex justify-center">
-							<SubmitBtn text="Crear" />
+							<ButtonsPermissions buttons={<SubmitBtn text="Crear" />} permissionsNeeded={['p-006']}/>
+							
 							<LinksBtn color="red" text="Cancelar" to="/" />
 						</div>
 					)}

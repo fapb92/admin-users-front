@@ -4,6 +4,7 @@ import { Layout } from "../Components/Layouts/Layout";
 import { useAuth } from "../Hooks/useAuth";
 import { useUser } from "../Hooks/useUser";
 import { useLocation, useNavigate } from "react-router-dom";
+import ButtonsPermissions from "../Components/Permissions/ButtonsPermissions";
 
 export const Home = () => {
 	document.title = "User Admin - Home";
@@ -41,9 +42,12 @@ export const Home = () => {
 				)}
 				{auth?.user && (
 					<div className="flex justify-center flex-wrap">
-						<LinksBtn color="green" text="Lista de roles en la plataforma" to="/role/list" />
-						<LinksBtn color="green" text="Lista de usuarios" to="/users" />
-						<LinksBtn color="green" text="Crear Usuarios" to="/users/create" />
+						<ButtonsPermissions
+							buttons={<LinksBtn color="green" text="Lista de roles en la plataforma" to="/role/list" />}
+							permissionsNeeded={["p-001"]}
+						/>
+						<ButtonsPermissions buttons={<LinksBtn color="green" text="Lista de usuarios" to="/users" />} permissionsNeeded={["p-009"]} />
+						<ButtonsPermissions buttons={<LinksBtn color="green" text="Crear Usuarios" to="/users/create" />} permissionsNeeded={["p-006"]} />
 					</div>
 				)}
 			</div>

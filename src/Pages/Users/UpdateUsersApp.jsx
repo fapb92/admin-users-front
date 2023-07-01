@@ -6,6 +6,7 @@ import { useUsersApp } from "../../Hooks/useUsersApp";
 import { Forms } from "../../Components/Layouts/Forms";
 import { InputText } from "../../Components/Inputs/InputText";
 import { SubmitBtn } from "../../Components/Buttons/SubmitBtn";
+import ButtonsPermissions from "../../Components/Permissions/ButtonsPermissions";
 
 export const UpdateUsersApp = () => {
 	const { id } = useParams();
@@ -72,7 +73,8 @@ export const UpdateUsersApp = () => {
 				<Forms title="Editar usuario" onSubmit={(e) => handleSubmit(e)} successMessage={successMessage} errorMessage={errorValidation.message}>
 					<InputText title="Nombre" name="name" value={updateUser.name} onChange={(e) => handleOnChcange(e)} errors={errorValidation?.errors?.name} />
 					<div className="flex justify-center">
-						<SubmitBtn text="Editar" color="green" />
+						<ButtonsPermissions buttons={<SubmitBtn text="Editar" color="green"/>} permissionsNeeded={['p-007']} />
+
 						<LinksBtn color="red" text="Volver" to="/" />
 					</div>
 				</Forms>

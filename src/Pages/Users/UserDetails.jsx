@@ -5,6 +5,7 @@ import { TableVerticalHead } from "../../Components/Tables/TableVerticalHead";
 import { LinksBtn } from "../../Components/Buttons/LinksBtn";
 import { useParams } from "react-router-dom";
 import { useUsersApp } from "../../Hooks/useUsersApp";
+import ButtonsPermissions from "../../Components/Permissions/ButtonsPermissions";
 
 export const UserDetails = () => {
 	const { id } = useParams();
@@ -18,7 +19,6 @@ export const UserDetails = () => {
 			try {
 				const res = await getUsersDetails(id);
 				setUserData(res.data);
-				console.log({ res });
 			} catch (error) {
 				console.log(error);
 			} finally {
@@ -45,8 +45,8 @@ export const UserDetails = () => {
 					}}
 				/>
 				<div className="flex justify-center">
-					<LinksBtn text="Editar Información" to="update" />
-					<LinksBtn color="green" text="Editar Roles" to="asignremove" />
+					<ButtonsPermissions buttons={<LinksBtn text="Editar Información" to="update" />} permissionsNeeded={["p-007"]} />
+					<ButtonsPermissions buttons={<LinksBtn color="green" text="Editar Roles" to="asignremove" />} permissionsNeeded={["p-004", "p-005"]} />
 					<LinksBtn color="red" text="Volver" to="/" />
 				</div>
 			</div>

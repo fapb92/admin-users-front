@@ -84,6 +84,7 @@ export const UserList = () => {
 										arg: { hint: "id" },
 									},
 								},
+								permissions:["p-010"]
 							},
 							{
 								button: Buttons,
@@ -93,6 +94,7 @@ export const UserList = () => {
 									onClick: { value: async (e) => await handleBorraUsuario(e) },
 									value: { hint: "id" },
 								},
+								permissions:["p-008"]
 							},
 						]}
 					/>
