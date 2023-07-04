@@ -19,6 +19,7 @@ import { CreateUsers } from "./Pages/Users/CreateUsers";
 import { AsignRemoveRoles } from "./Pages/Users/AsignRemoveRoles";
 import { NotFoundPage } from "./Pages/NotFoundPage";
 import { RequirePermissions } from "./Components/Permissions/RequirePermissions";
+import { VerifyEmail } from "./Pages/verifyEmail";
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 			<Routes>
 				<Route path="/signup" element={<Register />} />
 				<Route path="/signin" element={<Login />} />
+				<Route path="/verification/email/:vcode/:hash" element={<VerifyEmail />} />
 				<Route path="/password/forget" element={<RequestResetPassword />} />
 				<Route path="/password/reset" element={<ResetPassword />} />
 				<Route element={<VerifyToken />}>
@@ -58,8 +60,8 @@ function App() {
 							<Route path="/role/:role" element={<ShowRole />} />
 						</Route>
 					</Route>
-					<Route path="*" element={<NotFoundPage />} />
 				</Route>
+				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>
 	);

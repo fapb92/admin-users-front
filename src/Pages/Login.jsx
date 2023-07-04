@@ -138,6 +138,9 @@ export const Login = () => {
 					</div>
 				</Forms>
 				<div className="flex justify-center">
+					<Link to="/signup" className="hover:bg-blue-700 hover:text-white p-2 rounded" children={"¿No tienes cuenta?"} />
+				</div>
+				<div className="flex justify-center">
 					<Link to="/password/forget" className="hover:bg-blue-700 hover:text-white p-2 rounded" children={"¿Olvido contraseña?"} />
 				</div>
 			</div>
